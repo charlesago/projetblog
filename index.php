@@ -67,7 +67,8 @@ if( !empty($_GET['carotte']) ){
             <div class="card-body ">
                 <h5 class="card-title titre"><?= $post["title"]?></h5>
                 <p class="card-text"><?= $post["content"]?></p>
-                <a href="" class="btn btn-primary ">Edit</a>
+                <a href="update-post.php?id=<?= $post['id'] ?>" class="btn btn-primary ">Edit</a>
+                <a href="" class="btn btn-success ">Ouvrir</a>
                 <form method="post" action="delete-post.php">
                     <button class="btn-danger btn"><input class="btn btn-danger" name="id" type="hidden" value="<?= $post["id"]?>">DEL</button>
                 </form>
