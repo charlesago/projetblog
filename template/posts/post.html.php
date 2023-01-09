@@ -13,24 +13,24 @@
     <p>Comments</p>
 </div>
 <div class="col-12 mt-3 row d-flex p-2 bg-dark bg-opacity-10 border border-dark border-start-2 rounded-end">
-    <?php
-    foreach ($comments as $comment) :
-        ?>
-            <div class="">
-                <p class="text-dark"><?= $comment["content"]?></p>
-            </div>
+    <?php foreach ($comments as $comment): ?>
 
-        </div>
+        <hr>
+
+        <p><strong><?= $comment['content'] ?></strong></p>
+        <a href="#" class="btn btn-danger"><strong>X</strong></a>
+        <a href="#" class="btn btn-warning"><strong>update</strong></a>
+
+        <hr>
+        <hr>
+
     <?php endforeach; ?>
+
+    <hr>
+<div>
+    <form method="post" class="form" action="createcomments.php">
+        <input class="form-control"  type="text" name="content" placeholder="add a comment">
+        <input name="id" class="form-control" type="hidden" value="<?= $post['id'] ?>">
+        <button class="btn btn-success" type="submit">Send</button>
+    </form>
 </div>
-
-
-<form method="POST">
-    <div class="mb-3 ">
-        <label for="exampleInputPassword1"  class="form-label formulaires">Comments</label>
-        <input type="text" name="postComments" class="form-control" id="exampleInputPassword1">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-</form>

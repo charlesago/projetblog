@@ -1,7 +1,7 @@
 <?php
 //faire tout le nécéssaire pour récupérer le contenu de l'article depuis $_POST
 //et le sauvegarder dans la DB à l'aide de PDO
-
+require_once ('librairies/tools.php');
 
 $adresseDB = "localhost";
 $nomDeDataBase = "blog";
@@ -16,12 +16,9 @@ if( !empty($_POST['postName']) ){
     $request = $pdo->query("INSERT INTO `posts` (`id`, `title`, `content`) VALUES (NULL, '$name', '$content');");
     $posts = $request->fetchAll();
 }
-ob_start();
-require_once ('template/posts/create.html.php');
+render("posts/create", [
 
-    $pageContent = ob_get_clean();
-
-require_once ('template/base.html.php');
+]);
 
 ?>
 

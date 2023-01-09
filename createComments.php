@@ -1,17 +1,39 @@
 <?php
+require_once ('librairies/tools.php');
 
 $id = null;
-
-if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
-    $id = $_GET['id'];
+if(!empty($_POST['id'])){
+    $id = $_POST['id'];
 }
 
-require_once('pdo.php');
+
+$content = null;
+if(!empty($_POST['content'])){
+    $content = $_POST['content'];
+}
 
 
-f( !empty($_POST['postName']) ){
-$name = $_POST['postName'];
-$content = $_POST['postContent'];
-$request = $pdo->query("INSERT INTO `posts` (`id`, `title`, `content`) VALUES (NULL, '$name', '$content');");
-$posts = $request->fetchAll();
+if($id && $content){
+
+    require_once ('pdo.php');
+
+    $requetePost = $pdo->prepare('SELECT * FROM posts WHERE id=:id');
+    $requetePost->execute(['id'=>$id]);
+    $post = $requetePost->fetch();
+
+    if(!$post){
+        redirect('index.php');
+    }
+
+    $requeteComment = $pdo->prepare('INSERT INTO comments SET content = :content, post_id = :post_id');
+
+    $requeteComment->execute([
+        "content"=>$content,
+        "post_id"=>$id
+    ]);
+
+    redirect("post.php?id=${id}");
+
+
+
 }

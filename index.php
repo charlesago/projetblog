@@ -1,5 +1,5 @@
 <?php
-
+require_once ('librairies/tools.php');
 
 $adresseDB = "localhost";
 $nomDeDataBase = "blog";
@@ -18,11 +18,10 @@ if( !empty($_GET['carotte']) ){
 
     $input = $_GET['carotte'];
 }
-ob_start();
-require_once ('template/posts/index.html.php');
+render("posts/index", [
+    "posts"=>$posts,
+    "pageTitle"=>"accueil du blog"
+]);
 
-$pageContent = ob_get_clean();
-
-require_once ('template/base.html.php');
 ?>
 

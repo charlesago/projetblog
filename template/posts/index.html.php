@@ -12,7 +12,8 @@
                 <p class="card-text"><?= $post["content"]?></p>
                 <a href="post.php?id=<?= $post['id']?>" class="btn btn-success ">Ouvrir</a>
             </div>
-
+    
         </div>
+    
     <?php endforeach; ?>
 </div>
