@@ -34,10 +34,13 @@
 
     <hr>
 </div>
-<div>
-    <form method="post" class="form" action="createcomments.php">
-        <input class="form-control"  type="text" name="content" placeholder="add a comment">
-        <input name="id" class="form-control" type="hidden" value="<?= $post['id'] ?>">
-        <button class="btn btn-success" type="submit">Send</button>
+<div class=" ">
+    <p class="text-primary mt-5 fs-5">Add Comments</p>
+    <form method="post" class="form text-light col d-flex " action="createcomments.php">
+        <div class="col-11 mt-3 row d-flex p-2 bg-dark bg-opacity-10  rounded-end text-light ">
+        <input class="form-control bg-dark text-light"  type="text" name="content" placeholder="add a comment">
+        <input name="id" class="form-text text-light " type="hidden" value="<?= $post['id'] ?>">
+        </div>
+        <button class="btn btn-outline-light ms-4 FormPost col-1" type="submit"><i class="bi bi-arrow-left-circle"></i></button>
     </form>
 </div>
